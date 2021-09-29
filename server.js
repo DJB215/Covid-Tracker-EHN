@@ -1,17 +1,18 @@
 const express = require("express");
 const cors = require("cors");
-const bodyParser = require("body-parser");
+//const https = require('https');
+//const fs = require('fs');
 const db = require("./backend/models");
 
 // import connectDB from "./backend/config/db.js"
 // import testRoutes from './backend/routes/testRoute.js'
-// import cors from 'cors'
+//const cors = require('cors') 
 // import express from 'express'
-// import dotenv from 'dotenv'
+const dotenv = require('dotenv')
 
 // connectDB()
 
-// dotenv.config()
+dotenv.config()
 
 const app = express()
 
@@ -20,6 +21,20 @@ app.use(cors())
 app.use(express.json())
 
 app.use(express.urlencoded({ extended: true }));
+
+// const privateKey = fs.readFileSync('/etc/letsencrypt/live/yourdomain.com/privkey.pem', 'utf8'); // key
+// const certificate = fs.readFileSync('/etc/letsencrypt/live/yourdomain.com/cert.pem', 'utf8'); // certificate
+// const ca = fs.readFileSync('/etc/letsencrypt/live/yourdomain.com/chain.pem', 'utf8'); // chain
+// const credentials = {
+//    key: privateKey,
+//    cert: certificate,
+//    ca: ca
+// };
+
+// const httpsServer = https.createServer(credentials, app);
+// httpsServer.listen('8443', () => {
+//     console.log('listening on https://einsteincovidtracker.com/:8443');
+// });
 
 db.mongoose
     .connect(db.url, {

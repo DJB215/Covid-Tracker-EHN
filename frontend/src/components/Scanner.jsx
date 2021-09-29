@@ -32,7 +32,6 @@ const Scanner = (props) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(EinsteinID, CovidTestCode, TestResult)
         const url = 'http://localhost:5000/api/tests'
            
         const requestOptions = {
